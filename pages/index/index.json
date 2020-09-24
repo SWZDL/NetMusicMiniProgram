@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "l-capsule-bar": "/miniprogram_npm/lin-ui/capsule-bar/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index"
+  },
+  "navigationBarBackgroundColor": "#fafafa",
+  "navigationStyle": "custom"
+}

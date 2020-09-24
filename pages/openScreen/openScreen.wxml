@@ -1,0 +1,7 @@
+<view class="container" bind:tap="clickPage">
+    <image src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200916093129.png"
+           class="logoText">
+    </image>
+    <image src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200916093038.png"
+           class="logo"></image>
+</view>

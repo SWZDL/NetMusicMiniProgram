@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/person/person",
+    "pages/openScreen/openScreen"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "网抑云音乐",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/icon_music_not_selected.png",
+        "selectedIconPath": "/image/icon_music_selected.png",
+        "text": "音乐"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "iconPath": "/image/icon_config_not_selected.png",
+        "selectedIconPath": "/image/icon_config_selected.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

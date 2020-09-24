@@ -1,0 +1,17 @@
+<!--pages/person/person.wxml-->
+<view class="container">
+    <!--未登录-提示登录-->
+    <view class="login">
+
+    </view>
+
+    <!--已登录-用户个人宫格-->
+    <view class="grid">
+
+    </view>
+
+    <!--其他设置-->
+    <view class="setting">
+        <!--        <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="loadFont">加载字体</l-button>-->
+    </view>
+</view>

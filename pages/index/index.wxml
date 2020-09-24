@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<l-capsule-bar hidden-capsule has-padding="{{true}}" home-page="/pages/index/index"
+               l-title-class="page-title-class" title="网抑云音乐">
+</l-capsule-bar>
+
+<view class="container">
+    <view class="page-name">
+        <text class="page-name-text">音乐推荐</text>
+        <text class="page-name-text-second">做最懂你的人</text>
+    </view>
+    <view>
+        <!--搜索栏-->
+        <l-search-bar placeholder="搜索" show-cancel="{{false}}" bg-color="#fff" l-container-class="search-bar" bind:linconfirm="searchMusic"
+                      bind:linfocus="clickSearchMusic"/>
+    </view>
+
+    <!--未登录-引导登陆栏-->
+    <view class="login-view">
+        <view class="login-view-left">
+            <text class="login-view-text">获取专属推荐</text>
+            <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}">立即登录</l-button>
+        </view>
+        <view class="login-view-right">
+            <image class="login-view-image"
+                   src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
+        </view>
+    </view>
+
+    <!-- 登陆-宫格 -->
+    <view>
+
+    </view>
+
+    <!-- 未登录-推荐歌单 -->
+    <view class="playLists">
+        <view class="playlist-first-text">精选歌单</view>
+        <l-card type="primary" wx:for="{{playlist}}" wx:key="coverImgId" image="{{item.coverImgUrl}}"
+                position="{{index % 2===0?'right':'left'}}" class="playlist-card" l-title-class="playlist-card-title"
+                title="{{item.name}}">
+            <!-- 此处为content -->
+            <view class="playlist-content">
+                订阅人数：{{item.subscribedCount}}
+                <!-- {{item.description}} -->
+            </view>
+        </l-card>
+    </view>
+
+    <!-- 已登录-个人收藏歌单/个人收藏音乐 -->
+    <view>
+
+    </view>
+</view>

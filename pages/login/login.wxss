@@ -1,0 +1,41 @@
+.container {
+    align-content: center;
+    align-items: center;
+
+}
+
+
+.logo-view {
+    margin-left: 50%;
+    margin-top: 50rpx;
+    transform: translate(-50%, 0);
+}
+
+.logo {
+    width: 441.5rpx;
+    height: 360rpx;
+}
+
+.login {
+
+}
+
+.l-form-btn-class {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rpx;
+}
+
+.l-form-content-class {
+    /* border: 1px solid black; */
+    /*height: 50rpx;*/
+}
+
+.l-form-label-class {
+    /* border: 1px solid black; */
+
+}
+
+.l-form-item-class {
+    /* background-color: red; */
+}

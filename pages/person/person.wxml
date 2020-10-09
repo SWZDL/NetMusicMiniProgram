@@ -1,17 +1,40 @@
 <!--pages/person/person.wxml-->
+<l-capsule-bar hidden-capsule has-padding="{{true}}" home-page="/pages/index/index"
+               l-title-class="page-title-class" title="网抑云音乐">
+</l-capsule-bar>
+
 <view class="container">
-    <!--未登录-提示登录-->
-    <view class="login">
+  <view class="page-name">
+    <text class="page-name-text">个人中心</text>
+    <text class="page-name-text-second">让我们更懂你</text>
+  </view>
 
+  <view>
+    <!--搜索栏-->
+    <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
+                  l-container-class="search-bar"
+                  bind:linfocus="clickSearchMusic"/>
+  </view>
+
+  <!--未登录-提示登录-->
+  <view class="login">
+    <view class="login-view-left">
+      <text class="login-view-text">登陆获取万千好歌</text>
+      <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="goToLogin">立即登录</l-button>
     </view>
-
-    <!--已登录-用户个人宫格-->
-    <view class="grid">
-
+    <view class="login-view-right">
+      <image class="login-view-image"
+             src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
     </view>
+  </view>
 
-    <!--其他设置-->
-    <view class="setting">
-        <!--        <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="loadFont">加载字体</l-button>-->
-    </view>
+  <!--已登录-用户个人宫格-->
+  <view class="grid">
+
+  </view>
+
+  <!--其他设置-->
+  <view class="setting">
+    <!--        <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="loadFont">加载字体</l-button>-->
+  </view>
 </view>

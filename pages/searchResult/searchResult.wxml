@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="search-bar">
+    <!--搜索栏-->
+    <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
+                  l-container-class="search-bar"
+                  bind:linconfirm="searchMusic"
+                  bind:linfocus="clickSearchMusic"/>
+  </view>
+  <view class="searchResult">
+
+  </view>
+</view>

@@ -8,7 +8,7 @@ page {
 }
 
 .page-title-class {
-    font-family: "时尚中黑简体", serif !important;
+    font-family: "时尚中黑简体", serif;
     /*box-shadow: 0 -20rpx rgba(255, 0, 0, 1) inset !important;*/
 }
 
@@ -136,4 +136,11 @@ page {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.popup-login {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 90rpx;
+    /*border: 1px solid red;*/
 }

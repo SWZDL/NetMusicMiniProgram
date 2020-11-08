@@ -23,8 +23,10 @@ class Http {
     return await promisic(wx.request)({
       url: `https://www.raspberry.cool${url}`,
       data,
-      method
-      // header: {},
+      method,
+      header: {
+        appkey: "4e51fb5b4a2d4e3cb7cccf87e6c4908a"
+      }
     })
   }
 }

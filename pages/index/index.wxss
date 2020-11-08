@@ -13,8 +13,6 @@ page {
 }
 
 .page-name {
-    /*display: flex;*/
-    /*flex-direction: row;*/
     width: 100%;
     height: 110rpx;
     background-color: rgba(254, 254, 254, 0.7);
@@ -97,50 +95,118 @@ page {
     transform: translate(-50%, -50%);
 }
 
-.playLists {
-    margin-top: 20rpx;
-    margin-bottom: 100rpx;
+.banner {
+    margin: 20rpx 0;
 }
 
-.playlist-card {
-    margin-bottom: 200rpx;
+.swiper-banner {
+    height: 270rpx;
 }
 
-.playlist-first-text {
+/*banner 中的图片*/
+.swiper-item-banner-image {
+    height: 270rpx;
+    width: 694rpx;
+    border-radius: 15rpx;
+    margin-left: 28rpx;
+}
+
+.playlist-first-text, .song-first-text {
     font-size: 35rpx;
     font-weight: bolder;
-    margin-left: 40rpx;
+    margin-left: 28rpx;
     margin-bottom: 20rpx;
     font-family: "时尚中黑简体", serif;
 }
 
-.playlist-image {
-    width: 140rpx;
-    height: 140rpx;
+.swiper-playlist {
+    height: 320rpx;
+    /*border: 1px solid red;*/
 }
 
-.playlist-card-title {
-    font-family: "sarasa-term-sc-regular", serif;
+.swiper-item-playlist {
+    margin-left: 28rpx;
 }
 
-.playlist-content {
-    font-size: small;
+.swiper-item-playlist-image {
+    height: 212rpx;
+    width: 212rpx;
+    box-shadow: 3rpx 3rpx 3rpx #cfcfcf;
+    border-radius: 10rpx;
+}
+
+.swiper-item-playlist-text {
+    width: 212rpx;
+    height: 70rpx;
+    font-size: 20rpx;
+    /*overflow: hidden;*/
     font-weight: normal;
     color: #727272;
     font-family: "sarasa-term-sc-regular", serif;
 }
 
-
-.navigation-bar-image {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+.playlist-image {
+    width: 212rpx;
+    height: 212rpx;
+    box-shadow: 3rpx 3rpx 3rpx #cfcfcf;
 }
 
-.popup-login {
+.swiper-songs {
+    height: 400rpx;
+}
+
+.swiper-item-song {
+    margin-left: 28rpx;
+}
+
+.swiper-item-song-card {
+    height: 120rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.swiper-item-song-image {
+    margin: 5rpx 0;
+    height: 110rpx;
+    width: 110rpx;
+    border-radius: 10rpx;
+    box-shadow: 3rpx 3rpx 3rpx #cfcfcf;
+}
+
+.swiper-item-song-text {
+    font-family: "Sarasa Term SC", serif;
+    margin-left: 20rpx;
     display: flex;
     flex-direction: column;
-    margin-bottom: 90rpx;
-    /*border: 1px solid red;*/
 }
+
+.swiper-item-song-text-title {
+    line-height: 70rpx;
+    font-size: 27rpx;
+}
+
+.swiper-item-song-text-content {
+    font-size: 18rpx;
+    line-height: 40rpx;
+    color: #d14b4b;
+    background-color: #fee3e0;
+    text-align: center;
+    border-radius: 15rpx;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+}
+
+/*.navigation-bar-image {*/
+/*    width: 100%;*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
+
+/*.popup-login {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    margin-bottom: 90rpx;*/
+/*}*/

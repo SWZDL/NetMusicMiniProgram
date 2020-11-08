@@ -1,4 +1,10 @@
-// pages/login/login.js
+import {
+  User
+} from '../../model/user'
+import {
+  Http
+} from '../../utils/http'
+
 Page({
 
   /**
@@ -46,35 +52,41 @@ Page({
     loadingLoginBtn: false
   },
 
-  doLogin(event) {
-    //显示加载状态
-    this.setData({
-      loadingLoginBtn: true
-    })
+  async doLogin(event) {
     const {
       detail
     } = event
-    console.log(detail)
-    /*
-      detail 返回三个参数
-      1、values: 各表单项的value值
-      2、errors: 各表单项验证后的返回的错误信息数组
-      3、isValidate: 表单是否验证通过的boolean值
-      具体格式示例：
-      detail = {
-         values: {
-             studentName: "",
-             studentAge: "",
-             studentAddress: ""
-         },
-         errors: {
-             studentName: [],
-             studentAge: [],
-             studentAddress: []
-         },
-         isValidate: true
+
+    // 显示加载状态
+    this.setData({
+      loadingLoginBtn: true
+    })
+
+    if (detail.errors.phoneNumber.length === 0 && detail.errors.password.length === 0) {
+      // 刷新登陆状态
+      const refreshLoginStatus = await Http.request({
+        url: '/login/refresh'
+      })
+      // 获取登陆状态
+      const loginStatus = await Http.request({
+        url: '/login/status'
+      })
+      // 如果是未登录状态
+      if (refreshLoginStatus.data.code == 301 && loginStatus.data.code == 301) {
+        const userDetail = await User.login(detail.values.phoneNumber, detail.values.password)
+        // 把用户信息存在本地
+        wx.setStorageSync('userDetail', userDetail)
       }
-    */
+
+      // 停止动画加载
+      this.setData({
+        loadingLoginBtn: false
+      })
+      // 跳转到个人中心页面
+      wx.switchTab({
+        url: '/pages/person/person'
+      })
+    }
   },
 
   /**

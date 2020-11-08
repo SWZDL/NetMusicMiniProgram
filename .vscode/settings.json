@@ -1,8 +1,10 @@
 {
-    "eslint.codeAction.showDocumentation": {
-        "enable": true
-    },
-    "eslint.codeAction.disableRuleComment": {
-        "enable": false
-    }
+  "files.associations": {
+    "*.wpy": "vue",
+    "*.wxml": "html",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.html": "html"
+  }
 }

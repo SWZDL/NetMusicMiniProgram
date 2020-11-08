@@ -1,55 +1,97 @@
-<l-capsule-bar hidden-capsule has-padding="{{true}}" home-page="/pages/index/index"
-               l-title-class="page-title-class" title="网抑云音乐">
+<!-- 自定义的标题 -->
+<l-capsule-bar hidden-capsule has-padding="{{true}}" home-page="/pages/index/index" l-title-class="page-title-class"
+               title="网抑云音乐">
 </l-capsule-bar>
 
 <view class="container">
-    <view class="page-name">
-        <text class="page-name-text">音乐推荐</text>
-        <text class="page-name-text-second">做最懂你的人</text>
+  <view class="page-name">
+    <text class="page-name-text">音乐推荐</text>
+    <text class="page-name-text-second">做最懂你的3人</text>
+  </view>
+
+  <view>
+    <!-- 搜索栏 -->
+    <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
+                  l-container-class="search-bar" bind:linfocus="clickSearchMusic"/>
+  </view>
+
+  <!-- 引导登陆栏 未登录时展示 -->
+  <view class="login-view" wx:if="{{!isLogin}}">
+    <view class="login-view-left">
+      <text class="login-view-text">获取专属推荐</text>
+      <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="goToLogin">立即登录
+      </l-button>
     </view>
-
-    <view>
-        <!--搜索栏-->
-        <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
-                      l-container-class="search-bar"
-                      bind:linfocus="clickSearchMusic"/>
+    <view class="login-view-right">
+      <image class="login-view-image"
+             src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
     </view>
+  </view>
 
-    <!--未登录-引导登陆栏-->
-    <view class="login-view">
-        <view class="login-view-left">
-            <text class="login-view-text">获取专属推荐</text>
-            <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="goToLogin">立即登录
-            </l-button>
-        </view>
-        <view class="login-view-right">
-            <image class="login-view-image"
-                   src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
-        </view>
-    </view>
+  <!-- banner栏 登不登录均展示 -->
+  <view class="banner">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" easing-function="linear"
+            class="swiper-banner"
+            circular="{{true}}">
+      <block wx:for="{{banner}}" wx:key="*this">
+        <swiper-item>
+          <image class="swiper-item-banner-image" src="{{item.pic}}" lazy-load="true"
+                 bind:tap="goBannerDetail" data-song-id="{{item.song.id}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 
+  <!-- 登陆-宫格 -->
+  <!--  <view>-->
+  <!--  </view>-->
 
-    <!-- 登陆-宫格 -->
-    <view>
+  <!-- 未登录-推荐歌单 -->
+  <view>
+    <view class="playlist-first-text">宝藏歌单，值得聆听</view>
+    <swiper indicator-dots="{{false}}"
+            autoplay="{{false}}"
+            interval="{{false}}"
+            display-multiple-items="{{3}}"
+    class="swiper-playlist">
+      <block wx:for="{{playlistRec}}" wx:key="creativeId">
+        <swiper-item class="swiper-item-playlist">
+          <view>
+            <image src="{{item.resources[0].uiElement.image.imageUrl}}" class="swiper-item-playlist-image"></image>
+            <view class="swiper-item-playlist-text">{{item.resources[0].uiElement.mainTitle.title}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 
-    </view>
-
-    <!-- 未登录-推荐歌单 -->
-    <view class="playLists">
-        <view class="playlist-first-text">精选歌单</view>
-        <l-card wx:for="{{playlist}}" wx:key="coverImgId" image="{{item.coverImgUrl}}"
-                position="{{index % 2===0?'right':'left'}}" class="playlist-card" l-title-class="playlist-card-title"
-                title="{{item.name}}">
-            <!-- 此处为content -->
-            <view class="playlist-content">
-                订阅人数：{{item.subscribedCount}}
-                <!-- {{item.description}} -->
+  <!-- 推荐单曲 -->
+  <view style="margin-top: 20rpx;margin-bottom: 120rpx">
+    <view class="song-first-text">你的专属推荐</view>
+    <swiper indicator-dots="{{false}}"
+            autoplay="{{false}}"
+            interval="{{false}}"
+            next-margin="60rpx"
+    class="swiper-songs">
+      <block wx:for="{{songRec}}" wx:key="*this" wx:for-item="songs">
+        <swiper-item class="swiper-item-song">
+          <block wx:for="{{songs.resources}}" wx:key="resourceId" wx:for-item="song">
+            <view class="swiper-item-song-card">
+              <image src="{{song.uiElement.image.imageUrl}}" class="swiper-item-song-image"></image>
+              <view class="swiper-item-song-text">
+                <view class="swiper-item-song-text-title">{{song.uiElement.mainTitle.title}}</view>
+                <view class="swiper-item-song-text-content">{{song.uiElement.subTitle.title}}</view>
+              </view>
             </view>
-        </l-card>
-    </view>
+          </block>
+        </swiper-item>
+      </block>
+    </swiper>
 
-    <!-- 已登录-个人收藏歌单/个人收藏音乐 -->
-    <view>
+  </view>
 
-    </view>
+  <!-- 已登录-个人收藏歌单/个人收藏音乐 -->
+  <view>
+
+  </view>
 </view>

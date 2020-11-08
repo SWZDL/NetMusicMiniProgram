@@ -2,7 +2,10 @@
   "usingComponents": {
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "l-capsule-bar": "/miniprogram_npm/lin-ui/capsule-bar/index",
-    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index"
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "l-grid": "/miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar/index"
   },
   "navigationBarBackgroundColor": "#fafafa",
   "navigationStyle": "custom"

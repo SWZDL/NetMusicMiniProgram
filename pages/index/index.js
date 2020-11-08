@@ -1,10 +1,16 @@
 // 获取应用实例
+// import {
+//   Playlists
+// } from "../../model/playlists"
 import {
-  Playlists
-} from "../../model/playlists"
+  Homepage
+} from "../../model/homepage"
 import {
   HotSearch
 } from "../../model/hotSearch"
+import {
+  Banner
+} from "../../model/banner"
 
 Component({
   data: {
@@ -13,7 +19,10 @@ Component({
     searchHots: [],
     //当前热搜关键词下标
     showSearchHotIndex: null,
-    playlist: []
+    playlistRec: [],
+    songRec: [],
+    // banner 数据
+    banner: []
   },
   pageLifetimes: {
     async show() {
@@ -25,16 +34,29 @@ Component({
         })
       }
 
+      // 如果本地保存有用户信息，说明用户已经登陆过
+      if (wx.getStorageInfoSync().keys.indexOf('userDetail') !== -1) {
+        that.setData({
+          isLogin: true
+        })
+      }
+
       /**
        * 加载播放列表
        */
-      if (that.data.playlist.length === 0) {
+      if (that.data.playlistRec.length === 0) {
         // 获取播放列表
-        const playlists = await Playlists.getPlayLists()
-        //数据绑定，将播放列表展示出来
+        // const playlists = await Playlists.getPlayLists()
+        const homePageBlocks = await Homepage.getHomePageBlockPage()
+
         that.setData({
-          playlist: playlists.data.playlists
+          //推荐歌单
+          playlistRec: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_PLAYLIST_RCMD').creatives,
+          //推荐歌曲
+          songRec: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_STYLE_RCMD').creatives
         })
+        console.log(that.data.playlistRec)
+        console.log(that.data.songRec)
       }
 
       /**
@@ -73,17 +95,19 @@ Component({
           searchHots: searchHots.data.result.hots,
           showSearchHotIndex: Math.round(Math.random() * searchHotLength)
         })
-
-        // } else {
-        //   如果热搜关键词已经获取过，那么就直接修改随机展示的关键词
-        // searchHotLength = that.data.searchHots.length
-        // that.setData({
-        //   showSearchHotIndex: Math.round(Math.random() * searchHotLength)
-        // })
-        // }
       }
+
+      /**
+       * 加载 banner
+       */
+      const banner = await Banner.getBanner()
+      that.setData({
+        banner: banner
+      })
+      // console.log(banner)
     }
   },
+
   lifetimes: {
     attached() {
       // 判断是否为首次加载
@@ -123,6 +147,13 @@ Component({
       wx.navigateTo({
         url: '/pages/login/login'
       })
+    },
+    /**
+     * 点击 banner，跳转到音乐播放界面
+     */
+    goBannerDetail(e) {
+      //获取到音乐ID，进行获取音乐URL并播放操作
+      console.log(e.currentTarget.dataset.songId)
     }
   }
 })

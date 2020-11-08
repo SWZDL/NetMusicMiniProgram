@@ -4,22 +4,22 @@
   </view>
 
   <l-toast></l-toast>
+
   <view class="login">
     <l-form name="loginForm" bind:linsubmit="doLogin" l-form-btn-class="l-form-btn-class" align-items="end"
-            l-form-container-class="l-form-container-class" tip-type="message">
+      l-form-container-class="l-form-container-class" tip-type="message">
       <l-form-item label="手机号:" name="phoneNumber" rules="{{loginForm.phoneNumberRules}}"
-                   l-form-content-class="l-form-content-class" l-form-label-class="l-form-label-class"
-                   l-form-item-class="l-form-item-class">
-        <l-input id="phoneNumber" type="number" value="{{loginForm.phoneNumber}}" hide-label
-                 show-row="{{true}}"/>
+        l-form-content-class="l-form-content-class" l-form-label-class="l-form-label-class"
+        l-form-item-class="l-form-item-class">
+        <l-input id="phoneNumber" type="number" value="{{loginForm.phoneNumber}}" hide-label show-row="{{true}}" />
       </l-form-item>
 
-      <l-form-item label="密码:" name="Password" rules="{{loginForm.passwordRules}}">
-        <l-input id="Password" type="password" value="{{loginForm.password}}" hide-label show-row="{{false}}"/>
+      <l-form-item label="密码:" name="password" rules="{{loginForm.passwordRules}}">
+        <l-input id="password" type="password" value="{{loginForm.password}}" hide-label show-row="{{false}}" />
       </l-form-item>
 
       <view slot="submit">
-        <l-button size="large" plain>登陆</l-button>
+        <l-button size="large" loading="{{loadingLoginBtn}}" plain>登陆</l-button>
       </view>
     </l-form>
   </view>

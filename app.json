@@ -18,8 +18,7 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "iconPath": "/image/icon_music_not_selected.png",
         "selectedIconPath": "/image/icon_music_selected.png",

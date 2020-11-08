@@ -1,97 +1,114 @@
 page {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-title-class {
-    font-family: "时尚中黑简体", serif;
-    /*box-shadow: 0 -20rpx rgba(255, 0, 0, 1) inset !important;*/
+  font-family: '时尚中黑简体', serif;
+  /*box-shadow: 0 -20rpx rgba(255, 0, 0, 1) inset !important;*/
 }
 
 .page-name {
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    width: 100%;
-    height: 110rpx;
-    background-color: rgba(254, 254, 254, 0.7);
-    padding-left: 30rpx;
-    position: fixed;
-    z-index: 999;
-    margin-top: 0rpx;
-    margin-bottom: 20rpx;
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  width: 100%;
+  height: 110rpx;
+  background-color: rgba(254, 254, 254, 0.7);
+  padding-left: 30rpx;
+  position: fixed;
+  z-index: 999;
+  margin-top: 0rpx;
+  margin-bottom: 20rpx;
 }
 
 .page-name-text {
-    font-family: "时尚中黑简体", serif;
-    font-weight: 30rpx;
-    font-size: 45rpx;
-    box-shadow: 0 -20rpx rgba(255, 0, 0, 1) inset;
+  font-family: '时尚中黑简体', serif;
+  font-weight: 30rpx;
+  font-size: 45rpx;
+  box-shadow: 0 -20rpx rgba(255, 0, 0, 1) inset;
 }
 
 .page-name-text-second {
-    font-family: "Sarasa Term SC", serif;
-    margin-left: 20rpx;
-    color: gray;
-    line-height: 50rpx;
-    box-shadow: 0 20rpx rgba(255, 0, 0, 0.3) inset;
-    font-size: 30rpx;
-    font-weight: 20rpx;
+  font-family: 'Sarasa Term SC', serif;
+  margin-left: 20rpx;
+  color: gray;
+  line-height: 50rpx;
+  box-shadow: 0 20rpx rgba(255, 0, 0, 0.3) inset;
+  font-size: 30rpx;
+  font-weight: 20rpx;
 }
 
 .search-bar {
-    margin-top: 120rpx;
+  margin-top: 120rpx;
 }
 
 .login {
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
-    height: 323rpx;
-    width: 730rpx;
-    margin-top: 20rpx;
-    margin-left: 10rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  height: 323rpx;
+  width: 730rpx;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
 }
 
 .login-view-left {
-    display: flex;
-    flex-direction: column;
-    height: 323rpx;
-    width: 430rpx;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 323rpx;
+  width: 430rpx;
+  position: relative;
 }
 
 .login-view-text {
-    font-family: "时尚中黑简体", serif;
-    font-size: 40rpx;
-    font-weight: bolder;
-    width: 400rpx;
-    position: absolute;
-    top: 20%;
-    left: 20%;
+  font-family: '时尚中黑简体', serif;
+  font-size: 40rpx;
+  font-weight: bolder;
+  width: 400rpx;
+  position: absolute;
+  top: 20%;
+  left: 20%;
 }
 
 .login-view-btn {
-    font-family: "时尚中黑简体", serif;
-    width: 300rpx;
-    margin-top: 211rpx;
-    margin-left: 65rpx;
+  font-family: '时尚中黑简体', serif;
+  width: 300rpx;
+  margin-top: 211rpx;
+  margin-left: 65rpx;
 }
 
 .login-view-right {
-    width: 300rpx;
-    height: 323rpx;
-    position: relative;
+  width: 300rpx;
+  height: 323rpx;
+  position: relative;
 }
 
 .login-view-image {
-    width: 257rpx;
-    height: 218rpx;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 257rpx;
+  height: 218rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.userBanner {
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 0;
+  height: 150rpx;
+  background-color: #fff;
+}
+
+.userName {
+  font-family: '时尚中黑简体';
+  margin-left: 50rpx;
+}
+
+.userAvatar {
+  margin-top: 10rpx;
 }

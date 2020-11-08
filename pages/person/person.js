@@ -1,11 +1,18 @@
-import {HotSearch} from "../../model/hotSearch"
+import {
+  HotSearch
+} from "../../model/hotSearch"
+import {
+  User
+} from "../../model/user"
 
 Component({
   data: {
     //热搜关键词列表
     searchHots: [],
     //当前热搜关键词下标
-    showSearchHotIndex: null
+    showSearchHotIndex: null,
+    isLogin: false,
+    userDetail: null
   },
   pageLifetimes: {
     async show() {
@@ -37,15 +44,30 @@ Component({
           showSearchHotIndex: Math.round(Math.random() * searchHotLength)
         })
       }
-
+      // 如果本地保存有用户信息，说明用户已经登陆过
+      if (wx.getStorageInfoSync().keys.indexOf('userDetail') !== -1) {
+        //获取用户等级
+        const level = User.getLevel()
+        console.log(level);
+        that.setData({
+          isLogin: true,
+          userDetail: wx.getStorageSync('userDetail')
+        })
+      }
     }
   },
   methods: {
+    /**
+     * 点击搜索音乐框，然后跳转到搜索界面
+     */
     clickSearchMusic() {
       wx.navigateTo({
         url: '/pages/searchResult/searchResult'
       })
     },
+    /**
+     * 点击登录按钮，跳转到登录界面
+     */
     goToLogin() {
       wx.navigateTo({
         url: '/pages/login/login'

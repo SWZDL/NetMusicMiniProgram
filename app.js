@@ -1,5 +1,3 @@
 App({
-  onLaunch() {
-  },
   globalData: {}
 })

@@ -1,7 +1,7 @@
 // 获取应用实例
-// import {
-//   Playlists
-// } from "../../model/playlists"
+import {
+  Music
+} from "../../model/music"
 import {
   Homepage
 } from "../../model/homepage"
@@ -19,11 +19,13 @@ Component({
     searchHots: [],
     //当前热搜关键词下标
     showSearchHotIndex: null,
-    playlistRec: [],
-    songRec: [],
+    PLAYLIST_RCMD: [],
+    STYLE_RCMD: [],
+    OFFICIAL_PLAYLIST: [],
     // banner 数据
     banner: []
   },
+  //组件所在页面的生命周期
   pageLifetimes: {
     async show() {
       const that = this
@@ -34,31 +36,119 @@ Component({
         })
       }
 
+      this._userLoginService()
+      await this._bannerService()
+      await this._indexContentService(false)
+      await this._hotSearchService()
+    }
+  },
+
+  lifetimes: {
+    attached() {
+      this._loadingWelcomePageService()
+    }
+  },
+  methods: {
+    /**
+     * 下拉刷新
+     */
+    async onPullDownRefresh() {
+      this._userLoginService()
+      await this._bannerService()
+      await this._indexContentService(true)
+      await this._hotSearchService()
+    },
+
+    /**
+     * 跳转开屏界面服务
+     * @private
+     */
+    _loadingWelcomePageService() {
+      // 判断是否为首次加载
+      let isFirstLoad = true
+      wx.getStorageInfo({
+        success(res) {
+          for (const key of res.keys) {
+            // 如果找到notFirstTimeLoad
+            if (key === 'notFirstTimeLoad') {
+              isFirstLoad = false
+              break
+            }
+          }
+          // 如果是首次加载,跳转到开屏页面。在开屏页面会给本地设置缓存，这样下次判断是否为首次加载如果找到缓存就不会进入开屏界面
+          if (isFirstLoad) {
+            wx.navigateTo({
+              url: '../openScreen/openScreen'
+            })
+          }
+        }
+      })
+    },
+
+    /**
+     * 加载用户登录服务
+     * 判断是否已经登陆过
+     * @private
+     */
+    _userLoginService() {
       // 如果本地保存有用户信息，说明用户已经登陆过
       if (wx.getStorageInfoSync().keys.indexOf('userDetail') !== -1) {
-        that.setData({
+        this.setData({
           isLogin: true
         })
       }
+    },
 
+    /**
+     * 加载首页 banner 内容
+     * @returns {Promise<void>}
+     * @private
+     */
+    async _bannerService() {
       /**
-       * 加载播放列表
+       * 加载 banner
        */
-      if (that.data.playlistRec.length === 0) {
+      const banner = await Banner.getBanner()
+      this.setData({
+        banner: banner
+      })
+    },
+
+    /**
+     * 加载首页内容服务
+     * @returns {Promise<void>}
+     * @private
+     */
+    async _indexContentService(coldLoad) {
+      /**
+       * 加载推荐歌单、推荐单曲、官方歌单
+       */
+      if (coldLoad || this.data.PLAYLIST_RCMD.length === 0) {
         // 获取播放列表
         // const playlists = await Playlists.getPlayLists()
         const homePageBlocks = await Homepage.getHomePageBlockPage()
-
-        that.setData({
+        this.setData({
           //推荐歌单
-          playlistRec: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_PLAYLIST_RCMD').creatives,
+          PLAYLIST_RCMD: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_PLAYLIST_RCMD').creatives,
           //推荐歌曲
-          songRec: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_STYLE_RCMD').creatives
+          STYLE_RCMD: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_STYLE_RCMD').creatives,
+          //推荐歌单
+          OFFICIAL_PLAYLIST: homePageBlocks.data.data.blocks.find(items => items.blockCode === 'HOMEPAGE_BLOCK_OFFICIAL_PLAYLIST').creatives
         })
-        console.log(that.data.playlistRec)
-        console.log(that.data.songRec)
+        console.log("===========PLAYLIST_RCMD==============")
+        console.log(this.data.PLAYLIST_RCMD)
+        console.log("===========STYLE_RCMD==============")
+        console.log(this.data.STYLE_RCMD)
+        console.log("===========OFFICIAL_PLAYLIST==============")
+        console.log("=========================")
       }
+    },
 
+    /**
+     * 加载热搜关键词服务
+     * @private
+     */
+    async _hotSearchService() {
       /**
        * 加载热搜关键词
        */
@@ -68,7 +158,7 @@ Component({
         const searchHotsStorage = wx.getStorageSync('searchHots')
         //过期时间为 60*60*1000毫秒，即10分钟
         if (searchHotsStorage && (new Date().getTime() - searchHotsStorage.setStorageTime < 60 * 60 * 1000)) {
-          that.setData({
+          this.setData({
             searchHots: searchHotsStorage.searchHots,
             showSearchHotIndex: Math.round(Math.random() * searchHotLength)
           })
@@ -91,47 +181,13 @@ Component({
 
         //设置热搜关键词的长度，以供下面计算 showSearchHotIndex，即决定展示哪一个热搜关键词
         searchHotLength = searchHots.data.result.hots.length
-        that.setData({
+        this.setData({
           searchHots: searchHots.data.result.hots,
           showSearchHotIndex: Math.round(Math.random() * searchHotLength)
         })
       }
+    },
 
-      /**
-       * 加载 banner
-       */
-      const banner = await Banner.getBanner()
-      that.setData({
-        banner: banner
-      })
-      // console.log(banner)
-    }
-  },
-
-  lifetimes: {
-    attached() {
-      // 判断是否为首次加载
-      let isFirstLoad = true
-      wx.getStorageInfo({
-        success(res) {
-          for (const key of res.keys) {
-            // 如果找到notFirstTimeLoad
-            if (key === 'notFirstTimeLoad') {
-              isFirstLoad = false
-              break
-            }
-          }
-          // 如果是首次加载,跳转到开屏页面。在开屏页面会给本地设置缓存，这样下次判断是否为首次加载如果找到缓存就不会进入开屏界面
-          if (isFirstLoad) {
-            wx.navigateTo({
-              url: '../openScreen/openScreen'
-            })
-          }
-        }
-      })
-    }
-  },
-  methods: {
     /**
      * 点击音乐搜索框，跳转到音乐搜索页面
      */
@@ -140,6 +196,7 @@ Component({
         url: '/pages/searchResult/searchResult'
       })
     },
+
     /**
      * 点击立即登录，跳转到登录页面
      */
@@ -148,12 +205,56 @@ Component({
         url: '/pages/login/login'
       })
     },
+
     /**
      * 点击 banner，跳转到音乐播放界面
      */
     goBannerDetail(e) {
-      //获取到音乐ID，进行获取音乐URL并播放操作
-      console.log(e.currentTarget.dataset.songId)
+      const songId = e.currentTarget.dataset.songId
+      this._goToSongPlayer(songId)
+    },
+
+    /**
+     * 获取针对用户推荐的歌单详情
+     * @param e
+     */
+    goPlaylistRcmdDetail(e) {
+      console.log(e.currentTarget.dataset.playlistid)
+    },
+
+    /**
+     * 获取针对用户推荐的单曲详情
+     * @param e
+     */
+    goStyleRcmdDetail(e) {
+      const songId = e.currentTarget.dataset.styleid
+      this._goToSongPlayer(songId)
+    },
+
+    /**
+     * 获取官方推荐歌单详情
+     * @param e
+     */
+    goOfficialPlaylistDetails(e) {
+      console.log(e.currentTarget.dataset.playlistid)
+    },
+
+    async _goToSongPlayer(songId) {
+      const canUse = await Music.checkMusic(songId)
+      if (canUse.data.success) {
+        wx.navigateTo({
+          url: "/pages/song/song",
+          success: (res) => {
+            // 通过eventChannel向被打开页面传送数据
+            res.eventChannel.emit('getSongId', {
+                songId: songId
+              }
+            )
+          }
+        })
+      } else {
+        console.log(canUse.data.message)
+      }
     }
   }
 })

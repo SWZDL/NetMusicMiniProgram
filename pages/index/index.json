@@ -11,5 +11,6 @@
     "l-input": "../../miniprogram_npm/lin-ui/input/index"
   },
   "navigationBarBackgroundColor": "#fafafa",
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true
 }

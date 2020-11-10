@@ -6,7 +6,7 @@
 <view class="container">
   <view class="page-name">
     <text class="page-name-text">音乐推荐</text>
-    <text class="page-name-text-second">做最懂你的3人</text>
+    <text class="page-name-text-second">做最懂你的人</text>
   </view>
 
   <view>
@@ -53,10 +53,10 @@
             autoplay="{{false}}"
             interval="{{false}}"
             display-multiple-items="{{3}}"
-    class="swiper-playlist">
-      <block wx:for="{{playlistRec}}" wx:key="creativeId">
+            class="swiper-playlist">
+      <block wx:for="{{PLAYLIST_RCMD}}" wx:key="creativeId">
         <swiper-item class="swiper-item-playlist">
-          <view>
+          <view bind:tap="goPlaylistRcmdDetail" data-playlistid="{{item.resources[0].resourceId}}">
             <image src="{{item.resources[0].uiElement.image.imageUrl}}" class="swiper-item-playlist-image"></image>
             <view class="swiper-item-playlist-text">{{item.resources[0].uiElement.mainTitle.title}}</view>
           </view>
@@ -66,17 +66,17 @@
   </view>
 
   <!-- 推荐单曲 -->
-  <view style="margin-top: 20rpx;margin-bottom: 120rpx">
+  <view>
     <view class="song-first-text">你的专属推荐</view>
     <swiper indicator-dots="{{false}}"
             autoplay="{{false}}"
             interval="{{false}}"
             next-margin="60rpx"
-    class="swiper-songs">
-      <block wx:for="{{songRec}}" wx:key="*this" wx:for-item="songs">
+            class="swiper-songs">
+      <block wx:for="{{STYLE_RCMD}}" wx:key="*this" wx:for-item="songs">
         <swiper-item class="swiper-item-song">
           <block wx:for="{{songs.resources}}" wx:key="resourceId" wx:for-item="song">
-            <view class="swiper-item-song-card">
+            <view class="swiper-item-song-card" bind:tap="goStyleRcmdDetail" data-styleid="{{song.resourceId}}">
               <image src="{{song.uiElement.image.imageUrl}}" class="swiper-item-song-image"></image>
               <view class="swiper-item-song-text">
                 <view class="swiper-item-song-text-title">{{song.uiElement.mainTitle.title}}</view>
@@ -87,7 +87,25 @@
         </swiper-item>
       </block>
     </swiper>
+  </view>
 
+  <!-- 官方推荐歌单 -->
+  <view style="margin-top: 20rpx;margin-bottom: 100rpx">
+    <view class="playlist-first-text">官方推荐歌单</view>
+    <swiper indicator-dots="{{false}}"
+            autoplay="{{false}}"
+            interval="{{false}}"
+            display-multiple-items="{{3}}"
+            class="swiper-playlist">
+      <block wx:for="{{OFFICIAL_PLAYLIST}}" wx:key="creativeId">
+        <swiper-item class="swiper-item-playlist">
+          <view bind:tap="goOfficialPlaylistDetails" data-playlistid="{{item.resources[0].resourceId}}">
+            <image src="{{item.resources[0].uiElement.image.imageUrl}}" class="swiper-item-playlist-image"></image>
+            <view class="swiper-item-playlist-text">{{item.resources[0].uiElement.mainTitle.title}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
   <!-- 已登录-个人收藏歌单/个人收藏音乐 -->

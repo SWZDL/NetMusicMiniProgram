@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/playlist/playlist",
+    "pages/song/song",
     "pages/person/person",
     "pages/openScreen/openScreen",
     "pages/login/login",

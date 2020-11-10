@@ -197,16 +197,3 @@ page {
     width: -webkit-fit-content;
     width: -moz-fit-content;
 }
-
-/*.navigation-bar-image {*/
-/*    width: 100%;*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*}*/
-
-/*.popup-login {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    margin-bottom: 90rpx;*/
-/*}*/

@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "l-grid": "/miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index"
+  }
 }

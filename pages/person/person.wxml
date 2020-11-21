@@ -1,59 +1,57 @@
 <!--pages/person/person.wxml-->
 <l-capsule-bar hidden-capsule has-padding="{{true}}" home-page="/pages/index/index" l-title-class="page-title-class"
-  title="网抑云音乐">
+               title="网抑云音乐">
 </l-capsule-bar>
 
 <view class="container">
-  <view class="page-name">
-    <text class="page-name-text">个人中心</text>
-    <text class="page-name-text-second">让我们更懂你</text>
-  </view>
-
-  <view>
-    <!--搜索栏-->
-    <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
-      l-container-class="search-bar" bind:linfocus="clickSearchMusic" />
-  </view>
-
-  <!--未登录-提示登录-->
-  <view class="login" wx:if="{{!isLogin}}">
-    <view class="login-view-left">
-      <text class="login-view-text">登陆获取万千好歌</text>
-      <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="goToLogin">立即登录</l-button>
+    <view class="page-name">
+        <text class="page-name-text">个人中心</text>
+        <text class="page-name-text-second">让我们更懂你</text>
     </view>
-    <view class="login-view-right">
-      <image class="login-view-image"
-        src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
+
+    <view>
+        <!--搜索栏-->
+        <l-search-bar placeholder="{{searchHots[showSearchHotIndex].first}}" show-cancel="{{false}}" bg-color="#fff"
+                      l-container-class="search-bar" bind:linfocus="clickSearchMusic"/>
     </view>
-  </view>
 
-  <view class="userBanner" wx:if="{{isLogin}}">
-    <l-avatar src="{{userDetail.data.profile.avatarUrl}}" l-class="userAvatar" />
-    <text class="userName">
-      {{userDetail.data.profile.nickname}}
-    </text>
-  </view>
+    <!--未登录-提示登录-->
+    <view class="login" wx:if="{{!isLogin}}">
+        <view class="login-view-left">
+            <text class="login-view-text">登陆获取万千好歌</text>
+            <l-button l-class="login-view-btn" shape="semicircle" plain="{{true}}" bind:lintap="goToLogin">立即登录
+            </l-button>
+        </view>
+        <view class="login-view-right">
+            <image class="login-view-image"
+                   src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20200919221749.png"></image>
+        </view>
+    </view>
 
-  <!--已登录-用户个人宫格-->
-  <view class="grid" wx:if="{{isLogin}}">
-    <l-grid>
-      <l-grid-item key="one" slot="one">
-        <view class="num">3</view>
-        <view class="text">助力</view>
-      </l-grid-item>
-      <l-grid-item key="two" slot="two">
-        <view class="num">134</view>
-        <view class="text">点赞</view>
-      </l-grid-item>
-      <l-grid-item key="three" slot="three">
-        <view class="num">1648</view>
-        <view class="text">评论</view>
-      </l-grid-item>
-    </l-grid>
-  </view>
+    <view class="userBanner" wx:if="{{isLogin}}">
+        <l-avatar src="{{userDetail.data.profile.avatarUrl}}" l-class="userAvatar"/>
+        <text class="userName">
+            {{userDetail.data.profile.nickname}}
+        </text>
+    </view>
 
-  <!--其他设置-->
-  <view class="setting">
+    <!--已登录-用户个人宫格-->
+    <view class="grid" wx:if="{{isLogin}}">
+        <l-grid>
+            <l-grid-item key="one" slot="one">
 
-  </view>
+            </l-grid-item>
+            <l-grid-item key="two" slot="two">
+
+            </l-grid-item>
+            <l-grid-item key="three" slot="three">
+
+            </l-grid-item>
+        </l-grid>
+    </view>
+
+    <!--其他设置-->
+    <view class="setting">
+
+    </view>
 </view>

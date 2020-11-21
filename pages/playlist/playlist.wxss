@@ -1,1 +1,70 @@
-/* pages/playlist/playlist.wxss */
+page {
+    background-color: #cfcfcf;
+}
+
+.playlist-card {
+    width: 100% !important;
+}
+
+.playlist-card-image {
+    border-radius: 20rpx;
+}
+
+.playlist-card-title {
+    font-family: "Sarasa Term SC", serif;
+    font-size: 35rpx !important;
+}
+
+.playlist-card-content {
+
+}
+
+.playlist-card-content-tag {
+    display: flex;
+    flex-direction: row;
+}
+
+.playlist-card-content-text {
+    font-family: "Sarasa Term SC Light", serif;
+    font-size: 25rpx;
+}
+
+.songs {
+    margin-top: 20rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50rpx;
+}
+
+.grid-image {
+    width: 20rpx;
+    height: 20rpx;
+}
+
+.song {
+    padding-left: 30rpx;
+    margin-top: 10rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 100%;
+    /*box-shadow: 0 1rpx 1rpx #999999;*/
+}
+
+.song-index {
+    font-family: "Sarasa Term SC Light", serif;
+    margin-right: 30rpx;
+    color: #999999;
+}
+
+.song-name {
+    font-family: "Sarasa Term SC", serif;
+    font-size: 35rpx;
+    color: black;
+}
+
+.song-singer {
+    font-family: "Sarasa Term SC", serif;
+    font-size: 30rpx;
+    color: black;
+}

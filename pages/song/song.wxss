@@ -1,1 +1,180 @@
-/* pages/song/song.wxss */
+page {
+    background-color: #000;
+}
+
+.page-title-class {
+    font-family: 'sarasa-term-sc-regular', serif;
+}
+
+.page-swiper {
+    position: fixed;
+    top: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100vh;
+}
+
+.page-swiper-item {
+    width: 100%;
+    height: 100vh;
+}
+
+.img-bgc {
+    filter: blur(50px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+}
+
+.cover-view-img {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    width: 400rpx;
+    height: 400rpx;
+    border-radius: 50%;
+}
+
+.img_animation {
+    position: absolute;
+    z-index: 10;
+    width: 400rpx;
+    height: 400rpx;
+    border-radius: 50%;
+    -webkit-animation: myRotate 10s linear infinite;
+    animation: myRotate 10s linear infinite;
+}
+
+.img {
+    position: absolute;
+    z-index: 10;
+    width: 400rpx;
+    height: 400rpx;
+    border-radius: 50%;
+}
+
+@-webkit-keyframes myRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+@keyframes myRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+.detail-text {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+}
+
+.detail-text-song-name {
+    font-family: "Sarasa Term SC", serif;
+    font-size: 35rpx;
+    color: white;
+}
+
+.detail-text-singer {
+    font-family: "Sarasa Term SC", serif;
+    font-size: 25rpx;
+    color: #dce1e5;
+}
+
+.progress {
+    position: absolute;
+    z-index: 10;
+    bottom: 200rpx;
+    width: 80%;
+    height: 100rpx;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.controls {
+    position: absolute;
+    width: 100%;
+    height: 100rpx;
+    z-index: 10;
+    bottom: 30rpx;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
+.controls-other {
+    line-height: 100rpx;
+    margin: 20rpx 40rpx;
+}
+
+.lyrics {
+    width: 100%;
+    height: 100vh;
+    color: white;
+    text-align: center;
+}
+
+.currentLyric {
+    width: 100%;
+    height: 200rpx;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%, 0);
+    font-size: 50rpx;
+    font-family: "Sarasa Term SC", serif;
+}
+
+.page-swiper-item-second {
+    background-color: #cfcfcf;
+    overflow: auto;
+}
+
+.comment-swiper-item-card {
+    width: 100% !important;
+    border: none;
+    box-shadow: none;
+}
+
+.comment-swiper-item-card-content {
+    font-family: "Sarasa Term SC", serif;
+}

@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "l-progress": "/miniprogram_npm/lin-ui/progress/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar/index"
+  }
 }

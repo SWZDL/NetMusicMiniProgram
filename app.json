@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/playlist/playlist",
     "pages/song/song",
+    "pages/playlist/playlist",
     "pages/person/person",
     "pages/openScreen/openScreen",
     "pages/login/login",
@@ -20,7 +20,8 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "/image/icon_music_not_selected.png",
         "selectedIconPath": "/image/icon_music_selected.png",
@@ -36,5 +37,8 @@
   },
   "usingComponents": {},
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

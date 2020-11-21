@@ -5,7 +5,7 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": false,
+    "es6": true,
     "enhance": true,
     "postcss": false,
     "preloadBackgroundData": false,
@@ -39,7 +39,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.13.1",
+  "libVersion": "2.14.0",
   "appid": "wxed13841872660831",
   "projectname": "NetMusic",
   "debugOptions": {
@@ -85,6 +85,13 @@
         {
           "name": "pages/person/person",
           "pathName": "pages/person/person",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "音乐播放界面",
+          "pathName": "pages/song/song",
+          "query": "songId= 1463102760",
           "scene": null
         }
       ]

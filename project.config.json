@@ -21,8 +21,9 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,7 +41,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
-  "appid": "wxed13841872660831",
+  "appid": "wxd7f92a3d1ea433d6",
   "projectname": "NetMusic",
   "debugOptions": {
     "hidedInDevtools": []
